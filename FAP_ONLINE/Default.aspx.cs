@@ -11,6 +11,14 @@ namespace FAP_ONLINE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CarregarDadosNaTela();
+            }
+        }
+
+        private void CarregarDadosNaTela()
+        {
 
         }
     }

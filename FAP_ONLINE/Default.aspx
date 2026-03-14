@@ -32,11 +32,83 @@
                 </div>
             </nav>
 
-            <div>
-                <asp:DropDownList ID = "IDOrigem" runat = "server" cssClass = "form-select"></asp:DropDownList>
-                <asp:DropDownList ID = "IDDestino" runat = "server" CssClass = "form-select"></asp:DropDownList>
-                <input type = "number" id = "IDTempo" class = "form-control" />
-                <asp:DropDownList ID = "IDPlano" runat = "server" CssClass = "form-select"></asp:DropDownList>
+            <div class="container pb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                    
+                        <div class="card shadow-lg border-0 rounded-3">
+                            <div class="card-header card-header-corporate p-4">
+                                <h4 class="mb-0 text-corporate fw-bold">
+                                    <i class="bi bi-calculator me-2"></i> Simulador de Tarifas FaleMais
+                                </h4>
+                                <p class="text-muted mb-0 mt-1 small">Calcule os custos da sua chamada interurbana com os nossos planos exclusivos.</p>
+                            </div>
+                        
+                            <div class="card-body p-5">
+                                <div class="row g-4 mb-4">
+                                    <div class="col-md-3">
+                                        <label class="form-label text-secondary fw-semibold"><i class="bi bi-geo-alt-fill me-1"></i> Origem (DDD)</label>
+                                        <asp:DropDownList ID="ddlOrigem" runat="server" CssClass="form-select border-secondary-subtle" ClientIDMode="Static"></asp:DropDownList>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label text-secondary fw-semibold"><i class="bi bi-pin-map-fill me-1"></i> Destino (DDD)</label>
+                                        <asp:DropDownList ID="ddlDestino" runat="server" CssClass="form-select border-secondary-subtle" ClientIDMode="Static"></asp:DropDownList>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label text-secondary fw-semibold"><i class="bi bi-clock-history me-1"></i> Tempo (Minutos)</label>
+                                        <div class="input-group">
+                                            <input type="number" id="txtTempo" class="form-control border-secondary-subtle" min="1" value="10" />
+                                            <span class="input-group-text bg-light text-muted">min</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label class="form-label text-secondary fw-semibold"><i class="bi bi-telephone-outbound-fill me-1"></i> Plano FaleMais</label>
+                                        <asp:DropDownList ID="ddlPlano" runat="server" CssClass="form-select border-secondary-subtle" ClientIDMode="Static"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-5 mt-2">
+                                    <div class="col-12 text-center">
+                                        <hr class="text-muted mb-4">
+                                        <button type="button" id="btnCalcular" class="btn btn-corporate btn-lg px-5 py-3 fw-bold rounded-pill">
+                                            <i class="bi bi-check-circle me-2"></i> Simular Valores
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="areaResultados" style="display:none;">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12">
+                                            <h5 class="text-center text-corporate fw-bold mb-4">Resumo Financeiro</h5>
+                                        </div>
+                                    
+                                        <div class="col-md-5">
+                                            <div class="card bg-success bg-opacity-10 border-success border-opacity-50 h-100">
+                                                <div class="card-body text-center p-4">
+                                                    <h6 class="text-success text-uppercase fw-bold"><i class="bi bi-star-fill me-1"></i> Com FaleMais</h6>
+                                                    <h2 id="lblComPlano" class="display-5 fw-bold text-success mt-3 mb-0">R$ 0,00</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5 mt-3 mt-md-0">
+                                            <div class="card bg-light border-secondary border-opacity-25 h-100">
+                                                <div class="card-body text-center p-4">
+                                                    <h6 class="text-muted text-uppercase fw-bold">Tarifa Padrão (Sem Plano)</h6>
+                                                    <h3 id="lblSemPlano" class="text-secondary mt-3 mb-0">R$ 0,00</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </form>

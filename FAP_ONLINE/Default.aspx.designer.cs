@@ -24,30 +24,30 @@ namespace FAP_ONLINE
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controle IDOrigem.
+        /// Controle ddlOrigem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IDOrigem;
+        protected global::System.Web.UI.WebControls.DropDownList ddlOrigem;
 
         /// <summary>
-        /// Controle IDDestino.
+        /// Controle ddlDestino.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IDDestino;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDestino;
 
         /// <summary>
-        /// Controle IDPlano.
+        /// Controle ddlPlano.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IDPlano;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlano;
     }
 }

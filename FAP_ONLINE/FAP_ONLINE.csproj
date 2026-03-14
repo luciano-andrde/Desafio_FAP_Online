@@ -199,6 +199,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202603141200177_inicial.cs" />
+    <Compile Include="Migrations\202603141200177_inicial.Designer.cs">
+      <DependentUpon>202603141200177_inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CalculadoraDeValorDaLigacao.cs" />
     <Compile Include="Models\Plano.cs" />
     <Compile Include="Models\Tarifa.cs" />
@@ -224,6 +229,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202603141200177_inicial.resx">
+      <DependentUpon>202603141200177_inicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

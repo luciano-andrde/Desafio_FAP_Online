@@ -15,7 +15,7 @@ namespace FAP_ONLINE.Models
         public int PlanoID { get; set; }
 
         [Required(ErrorMessage = "O nome do plano é obrigatório."), StringLength(50)]
-        public string PlanoName { get; set; }
+        public string PlanoNome { get; set; }
 
         [Required(ErrorMessage = "O plano deve ter uma quantidade de minutos gratuitos.")]
         public int MinutosGratuitos { get; set; }

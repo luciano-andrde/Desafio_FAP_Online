@@ -1,19 +1,21 @@
 ﻿using FAP_ONLINE.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace FAP_ONLINE.Data
 {
-    public class Context: DbContext
+    //Contexto do entity framework, responsável pela conexão com o banco de dados e mapeamento das tabelas
+    public class Context : DbContext
     {
-        public Context() : base("FAP_ONLINE")
+        //Conecta ao banco de dados usando a connection string "SkynetzConnection" definida no web.config
+        public Context() : base("SkynetzConnection")
         {
 
         }
+
+        //Representa a tabela de planos no banco de dados
         public DbSet<Plano> Planos { get; set; }
-        public DbSet<Tarifa> Tarifa { get; set; }
+
+        //Representa a tabela tarifas no banco de dados
+        public DbSet<Tarifa> Tarifas { get; set; }
     }
 }

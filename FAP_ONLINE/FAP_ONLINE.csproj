@@ -203,6 +203,10 @@
     <Compile Include="Migrations\202603141200177_inicial.Designer.cs">
       <DependentUpon>202603141200177_inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202603141817539_DataBase.cs" />
+    <Compile Include="Migrations\202603141817539_DataBase.Designer.cs">
+      <DependentUpon>202603141817539_DataBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CalculadoraDeValorDaLigacao.cs" />
     <Compile Include="Models\Plano.cs" />
@@ -233,6 +237,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202603141200177_inicial.resx">
       <DependentUpon>202603141200177_inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202603141817539_DataBase.resx">
+      <DependentUpon>202603141817539_DataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

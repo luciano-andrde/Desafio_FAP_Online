@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FAP_ONLINE.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,23 @@ namespace FAP_ONLINE
 
         private void CarregarDadosNaTela()
         {
+            using (var contexto = new Context())
+            {
+                var listaDePlanos = contexto.Planos.ToList();
 
+                ddlPlano.DataSource = listaDePlanos;
+                ddlPlano.DataTextField = "PlanoNome";
+                ddlPlano.DataValueField = "PlanoID";
+                ddlPlano.DataBind();
+
+                var origens = contexto.Tarifa.Select(t => t.Origem).Distinct().ToList();
+                ddlOrigem.DataSource = origens;
+                ddlOrigem.DataBind();
+
+                var destinos = contexto.Tarifa.Select(t => t.Destino).Distinct().ToList();
+                ddlDestino.DataSource = destinos;
+                ddlDestino.DataBind();
+            }
         }
     }
 }

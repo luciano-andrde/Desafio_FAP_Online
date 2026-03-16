@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
@@ -41,6 +43,7 @@
             background-color: #eaeff5;
         }
     </style>
+
 </head>
 
 <body>
@@ -52,7 +55,6 @@
                 <span class="navbar-brand mb-0 h1 fs-3">
                     <i class="bi bi-globe-americas me-2"></i>Skynetz Telecom
                 </span>
-                <span class="text-light small d-none d-md-block"><i class="bi bi-shield-lock-fill text-success"></i>Placeholder </span>
             </div>
         </nav>
 
@@ -116,7 +118,7 @@
                             </div>
 
                             <!-- Região onde irão aparecer os resultados do calculo de valor -->
-                            <div id="areaResultados" style="display: none;">
+                            <div id="areaResultados" style="display: none; flex-direction: column; align-items: center;">
                                 <div class="row justify-content-center">
                                     <div class="col-12">
                                         <h5 class="text-center text-corporate fw-bold mb-4">Resumo Financeiro</h5>
@@ -149,6 +151,59 @@
                 </div>
             </div>
         </div>
+
+        <!-- Script do Ajax -->
+        <script>
+
+            //Inicia a simulação de valores com o clique do botão
+            $("#btnCalcular").on("click", function () {
+
+                //Coleta os valores dos inputs
+                const origem = $("#ddlOrigem").val();
+                const destino = $("#ddlDestino").val();
+                const tempo = parseInt($("#txtTempo").val());
+                const planoID = parseInt($("#ddlPlano").val());
+
+                //Valida o tempo antes de enviar a requisição
+                if (isNaN(tempo) || tempo <= 0) {
+                    alert("Por favor, introduza um tempo válido para a chamada.");
+                    return;
+                }
+
+                //Envia os dados para o WebMethod via Ajax e aguarda o retorno
+                $.ajax({
+                    type: "POST",
+                    url: "Default.aspx/Calcular",
+                    data: JSON.stringify({
+                        origem: origem,
+                        destino: destino,
+                        tempo: tempo,
+                        planoID: planoID
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        const resultado = data.d;
+
+                        if (resultado.sucesso) {
+                            //Exibe os valores calculados e mostra a área de resultados
+                            $("#lblComPlano").text(resultado.valorComPlano);
+                            $("#lblSemPlano").text(resultado.valorSemPlano);
+                            $("#areaResultados").show();
+                        } else {
+                            //Exibe a mensagem de erro e oculta a área de resultados
+                            alert(resultado.mensagem);
+                            $("#areaResultados").hide();
+                        }
+                    },
+                    error: function (error) {
+                        //Erro de comunicação com o servidor
+                        console.error("Erro na requisição Ajax: ", error);
+                        alert("Ocorreu um erro ao comunicar com o servidor.");
+                    }
+                });
+            });
+        </script>
 
     </form>
 </body>

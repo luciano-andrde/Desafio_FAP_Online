@@ -1,0 +1,88 @@
+================================================================
+ FALEMAIS - SIMULADOR DE TARIFAS SKYNETZ
+================================================================
+
+DESCRIÇÃO
+---------
+Sistema web desenvolvido em C# ASP.NET WebForms que permite
+calcular e comparar o valor de ligações interurbanas com e sem
+o plano FaleMais da Skynetz Telecom.
+
+
+REQUISITOS
+----------
+- Visual Studio 2019 ou superior
+- .NET Framework 4.7.2 ou superior
+- SQL Server LocalDB (incluso no Visual Studio)
+- Entity Framework 6
+
+
+CONFIGURAÇÃO DO BANCO DE DADOS
+-------------------------------
+1. Abra o projeto no Visual Studio
+2. Localize o arquivo Web.config na raiz do projeto
+3. Verifique a connection string "SkynetzConnection":
+
+   <connectionStrings>
+       <add name="SkynetzConnection"
+            connectionString="Data Source=(LocalDb)\MSSQLLocalDB;
+                             Initial Catalog=SkynetzDB;
+                             Integrated Security=True"
+            providerName="System.Data.SqlClient" />
+   </connectionStrings>
+
+4. Restaure os pacotes NuGet necessários:
+   - Clique com o botão direito na Solution
+   - Selecione "Restore NuGet Packages"
+   - Aguarde a instalação dos pacotes
+
+5. Abra o Package Manager Console:
+   Tools → NuGet Package Manager → Package Manager Console
+
+6. Execute o comando para criar e popular o banco de dados:
+   Update-Database
+
+
+COMO RODAR
+----------
+1. Com o banco configurado, pressione F5 ou clique em "Iniciar"
+   no Visual Studio
+2. O sistema abrirá automaticamente no navegador
+
+
+COMO USAR
+---------
+1. Selecione o DDD de origem da ligação
+2. Selecione o DDD de destino da ligação
+3. Informe o tempo da ligação em minutos
+4. Selecione o plano FaleMais desejado (30, 60 ou 120 minutos)
+5. Clique em "Simular Valores"
+6. O sistema exibirá dois valores:
+   - Com FaleMais: valor cobrado utilizando o plano
+   - Sem FaleMais: valor cobrado pela tarifa normal
+
+OBSERVAÇÃO: Caso a rota entre origem e destino não esteja
+disponível, o sistema informará que a rota não está cadastrada.
+
+
+PLANOS DISPONÍVEIS
+------------------
+- Fale Mais 30:  30 minutos gratuitos
+- Fale Mais 60:  60 minutos gratuitos
+- Fale Mais 120: 120 minutos gratuitos
+
+Minutos excedentes são cobrados com acréscimo de 10%
+sobre a tarifa normal.
+
+
+ROTAS DISPONÍVEIS
+-----------------
+Origem  Destino  R$/min
+011     016      R$ 1,90
+016     011      R$ 2,90
+011     017      R$ 1,70
+017     011      R$ 2,70
+011     018      R$ 0,90
+018     011      R$ 1,90
+
+================================================================

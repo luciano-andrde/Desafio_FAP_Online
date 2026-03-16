@@ -12,7 +12,7 @@ Sistema web desenvolvido em C# ASP.NET WebForms que permite calcular e comparar 
 
 ## 📸 Screenshot
 
-![Screenshot do sistema](assets/screenshot.png)
+![Screenshot do sistema](assets/Screenshot.png)
 
 ---
 
